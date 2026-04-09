@@ -1,4 +1,4 @@
-using Statistics, DelimitedFiles
+using Statistics, DelimitedFiles#, PyPlot
 
 println("Hi, what's your name?")
 name = readline()
@@ -44,5 +44,5 @@ else
 end
 
 #PyPlot.plot(k,x)
-writedlm("lab07-sample-0.csv",x,',')
+writedlm("lab02-sample-0.csv",x,',')
 
