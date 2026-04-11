@@ -804,6 +804,12 @@ wheels = [
 ]
 
 [[package]]
+name = "matlab"
+version = "0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d1/ea/1ecc1d9dfde594111b395dff9637183225dfb55b54fff4a906ba0ad5095a/matlab-0.1.tar.gz", hash = "sha256:8b13f7f121fcfb138203e35fa931e5f434abeefccfc583f8b3b4e2c0d0e7bcae", size = 538, upload-time = "2014-10-03T22:43:53.169Z" }
+
+[[package]]
 name = "matplotlib"
 version = "3.10.8"
 source = { registry = "https://pypi.org/simple" }
@@ -1430,6 +1436,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "ipywidgets" },
+    { name = "matlab" },
     { name = "matplotlib" },
     { name = "notebook" },
     { name = "numpy" },
@@ -1443,6 +1450,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "ipywidgets", specifier = ">=8.1.8" },
+    { name = "matlab", specifier = ">=0.1" },
     { name = "matplotlib", specifier = ">=3.10.8" },
     { name = "notebook", specifier = ">=7.5.3" },
     { name = "numpy", specifier = ">=2.4.2" },
