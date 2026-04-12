@@ -7,7 +7,7 @@ time = np.arange(0, 1, sampling_rate)
 print(time)
 
 frequency = 12
-nu = 2.0*(math.pi)*frequency
+nu = 2.0*(math.pi)*frequency # angular frequency
 y = []
 for i in time:
     y.append(math.sin(nu*i))
