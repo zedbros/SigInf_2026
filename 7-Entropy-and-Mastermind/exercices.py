@@ -165,7 +165,7 @@ def get_response(secret, guess):
         if(value == secret[index]):
             black += 1
             already_black.append(index)
-    already_white = []
+    already_white = [] # HHHHHEEEEERRERRRRE BOOIIIIIIIIIIIIIIIIII CORRECT THIS
     for index, value in enumerate(guess):
         if index in already_black:
             continue
