@@ -1,4 +1,5 @@
 import math
+from collections import defaultdict
 
 # 1.1
 # a)
@@ -161,16 +162,18 @@ def get_response(secret, guess):
     black = 0
     white = 0
     already_black = []
+    already_scanned = []
     for index, value in enumerate(guess):
         if(value == secret[index]):
             black += 1
             already_black.append(index)
-    already_white = [] # HHHHHEEEEERRERRRRE BOOIIIIIIIIIIIIIIIIII CORRECT THIS
+            already_scanned.append(value)
     for index, value in enumerate(guess):
         if index in already_black:
             continue
-        if value in secret:
+        if value in secret and already_scanned.count(value) < secret.count(value):
             white += 1
+            already_scanned.append(value)
 
     return black, white
 
@@ -178,3 +181,86 @@ s = [(1,2,3,4), (1,2,3,4), (1,2,3,4), (1,1,1,1), (1,2,1,2), (1,1,2,3,4)]
 g = [(1,2,3,4), (4,3,2,1), (1,3,2,4), (1,2,3,4), (2,1,2,1), (2,1,4,1,1)]
 for i in range(len(s)):
     print(s[i], g[i], get_response(s[i], g[i]))
+
+
+
+# Milestone 2
+def partition(candidates, guess):
+    """
+    Partition candidates by the response each would give to guess.
+    Returns a dict mapping response -> list of candidates.
+    """
+    groups = defaultdict(list)
+    for c in candidates:
+        groups[get_response(c, guess)].append(c)
+    return dict(groups)
+codes = all_codes()
+test_partition = partition(codes, (1, 1, 2, 2))
+
+total = sum(len(g) for g in test_partition.values())
+print(f"\n{'Response':<12} {'Count':>6}")
+print("-" * 19)
+for response, group in sorted(test_partition.items()):
+    print(f"{str(response):<12} {len(group):>6}")
+print(f"Number of distinct responses: {len(test_partition)}")
+print(f"Total candidates across all groups: {total}  (expected 1296)\n")
+
+
+# Milestone 3
+def expected_entropy(candidates, guess):
+    """
+    Compute the expected entropy of the candidate set after making guess.
+    """
+    partitions = partition(candidates, guess)
+    total = len(candidates)
+    h = 0
+    for group in partitions.values():
+        p = len(group)/total
+        if p > 0:
+            h -= p*math.log2(p)
+    # This is (-sum(p*log_2(p))), the entropy.
+    # But we want expected *remaining* entropy, not the entropy of the response distribution.
+
+    # Going to do this instead in the best_guess section versus here.
+    return h
+
+def best_guess(candidates, all_codes_list):
+    """
+    Return the guess (from all_codes_list) that minimizes expected remaining entropy.
+    """
+    best_guess = None
+    best_h = -1
+    for guess in all_codes_list:
+        h = expected_entropy(candidates, guess)
+        if best_h < h:
+            best_guess = guess
+            best_h = h
+    return best_guess
+
+def solve():
+    candidates = all_codes()
+    codes = all_codes()
+    turn = 1
+
+    print(f"I will try to guess your secret code ({CODE_LENGTH} pegs, colors {COLORS}).")
+    print("After each guess, enter the response as: black white (e.g. '2 1')\n")
+
+    while True:
+        if len(candidates) == 1:
+            print(f"Turn {turn}: The secret must be {candidates[0]}!")
+            break
+
+        guess = best_guess(candidates, codes)
+        print(f"Turn {turn}: I guess {guess}")
+
+        response_str = input("Your response (black white): ")
+        black, white = map(int, response_str.split())
+        if black == CODE_LENGTH:
+            print(f"Solved in {turn} turn(s)!")
+            break
+        # Filter candidates to those consistent with the response
+        candidates = [c for c in candidates if get_response(c, guess) == (black, white)]
+        print(f" {len(candidates)} candidate(s) remaining.\n")
+        turn += 1
+
+solve()
