@@ -10,7 +10,7 @@ for i in range(len(a)):
     A[a[i]] = p[i]
 s = sum(p)
 plt.bar([i for i in A.keys()], [i/s for i in A.values()])
-plt.show()
+# plt.show()
 
 normalised_p = [round(i/s, 2) for i in p]
 
@@ -32,3 +32,44 @@ E_l_C_x = 0
 for i in range(len(a)):
     E_l_C_x += len(codes[i])*normalised_p[i]
 print(E_l_C_x)
+
+
+
+
+
+# PARTIE 3
+f = open("8-Code-Prefix/lorem_ipsum.txt")
+# print(f.read())
+
+code = {}
+alphabet = ''.join(chr(i) for i in range(ord('a'), ord('z')+1))
+for index, value in enumerate(alphabet):
+    code[value] = index
+coded_text = ""
+temp = ""
+for i in f:
+    i = i.lower()
+    if i not in alphabet:
+        if temp == "":
+            coded_text += i
+        else:
+            coded_text += code[temp]
+            coded_text += i
+        continue
+
+    if temp == "":
+        temp += i
+    else:
+        t = temp + i
+        if t in code:
+            temp += i            
+        else:
+            code[t] = code[temp] + i
+            coded_text += code[t]
+
+print('-' * 20)
+# print(coded_text)
+
+# with open("8-Code-Prefix/coded_lorem_ipsum.txt", "w", encoding="utf-8") as w:
+#     for i in coded_text:
+#         w.write(i)

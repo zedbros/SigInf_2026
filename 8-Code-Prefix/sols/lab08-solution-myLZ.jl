@@ -47,10 +47,7 @@ function myLZ_decode(code::String)
 	return text, T
 end
 
-text = lowercase(read("lab04-solution-myLoremIpsum.txt",String)[1:end-1])
+text = lowercase(read("8-Code-Prefix/sols/lab08-solution-myLoremIpsum.txt",String)[1:end-1])
 code = myLZ_encode(text)
-write("myCode.txt",code[1])
+write("8-Code-Prefix/sols/myCode.txt",code[1])
 txet = myLZ_decode(code[1])
-
-
-
