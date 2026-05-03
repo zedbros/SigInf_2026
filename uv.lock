@@ -860,6 +860,20 @@ wheels = [
 ]
 
 [[package]]
+name = "meteostat"
+version = "2.1.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pandas" },
+    { name = "pytz" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/23/a1/52a138270f770ff7a5ff5376a6f2b59bbb7d494897ebb87ed41cbec3e861/meteostat-2.1.4.tar.gz", hash = "sha256:186936378be1a8234a91530ccac2464023cc610a9c5db5f1b988a07883e0c5c6", size = 58599, upload-time = "2026-03-21T10:47:28.735Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/50/12/2a86b1ffd84b77c9791c6b6a2f17bc0f8e6b9ae9b951aebe358e27e7d09d/meteostat-2.1.4-py3-none-any.whl", hash = "sha256:4a28a919aadf4e523b03baec1bdde883da5ff78dc84e1de4680be577a037dd84", size = 93773, upload-time = "2026-03-21T10:47:27.453Z" },
+]
+
+[[package]]
 name = "mistune"
 version = "3.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1249,6 +1263,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pytz"
+version = "2023.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ae/fd/c5bafe60236bc2a464452f916b6a1806257109c8954d6a7d19e5d4fb012f/pytz-2023.4.tar.gz", hash = "sha256:31d4583c4ed539cd037956140d695e42c033a19e984bfce9964a3f7d59bc2b40", size = 319467, upload-time = "2024-01-29T03:49:27.068Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3b/dd/9b84302ba85ac6d3d3042d3e8698374838bde1c386b4adb1223d7a0efd4e/pytz-2023.4-py2.py3-none-any.whl", hash = "sha256:f90ef520d95e7c46951105338d918664ebfd6f1d995bd7d153127ce90efafa6a", size = 506530, upload-time = "2024-01-29T03:41:21.437Z" },
+]
+
+[[package]]
 name = "pywinpty"
 version = "3.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1486,6 +1509,7 @@ dependencies = [
     { name = "ipywidgets" },
     { name = "matlab" },
     { name = "matplotlib" },
+    { name = "meteostat" },
     { name = "notebook" },
     { name = "numpy" },
     { name = "opencv-python" },
@@ -1501,6 +1525,7 @@ requires-dist = [
     { name = "ipywidgets", specifier = ">=8.1.8" },
     { name = "matlab", specifier = ">=0.1" },
     { name = "matplotlib", specifier = ">=3.10.8" },
+    { name = "meteostat", specifier = ">=2.1.4" },
     { name = "notebook", specifier = ">=7.5.3" },
     { name = "numpy", specifier = ">=2.4.2" },
     { name = "opencv-python", specifier = ">=4.13.0.92" },

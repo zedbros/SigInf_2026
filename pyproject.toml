@@ -8,6 +8,7 @@ dependencies = [
     "ipywidgets>=8.1.8",
     "matlab>=0.1",
     "matplotlib>=3.10.8",
+    "meteostat>=2.1.4",
     "notebook>=7.5.3",
     "numpy>=2.4.2",
     "opencv-python>=4.13.0.92",
