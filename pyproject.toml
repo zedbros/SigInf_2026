@@ -12,6 +12,7 @@ dependencies = [
     "notebook>=7.5.3",
     "numpy>=2.4.2",
     "opencv-python>=4.13.0.92",
+    "pandas>=3.0.2",
     "plotly>=6.6.0",
     "requests>=2.32.5",
     "scipy>=1.17.1",
