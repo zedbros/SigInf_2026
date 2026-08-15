@@ -1,0 +1,23 @@
+Should have done 35136 * 15
+
+Discrete
+
+Problems with LSE: linear: if no data, follow high line => if Nan => =0.
+                   non-linear: very complexe.
+
+Sliding average.. copied from past lab.. low pass.
+A moving average is commonly used with time series data to smooth out 
+short-term fluctuations and highlight longer-term trends
+
+The official term for heating station is District heating or heat networks.
+
+Forgot to fill in the last one.. didn't have a clue.
+
+
+
+
+Every signal is made up of a bunch of sin waves that get progressivly smaller
+the more time we have, the more frequency resolution we get.
+
+A square kernel needs a bunch of tiny sin waves => higher frequency to form
+a straight line
